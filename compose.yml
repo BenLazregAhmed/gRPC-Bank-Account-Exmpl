@@ -1,0 +1,12 @@
+services:
+  bank-server:
+    container_name: bank-server
+    build: RPC-server
+  bank-client:
+    container_name: bank-client
+    build: RPC-client
+    stdin_open: true
+    tty: true
+    depends_on:
+      bank-server:
+        condition: service_started
